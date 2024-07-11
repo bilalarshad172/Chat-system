@@ -63,7 +63,7 @@ function handleInputErrors({
   confirmPassword,
   gender,
 }) {
-  if (!fullName | !userName | !password | !confirmPassword | !gender) {
+  if (!fullName || !userName || !password || !confirmPassword || !gender) {
     toast.error("Please fill in all fields");
     return false;
   }

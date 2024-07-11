@@ -1,26 +1,26 @@
-import React, { useState } from 'react'
-import GenderCheckbox from './GenderCheckbox';
-import { Link } from 'react-router-dom';
-import useSignup from '../../hooks/useSignup';
+import React, { useState } from "react";
+import GenderCheckbox from "./GenderCheckbox";
+import { Link } from "react-router-dom";
+import useSignup from "../../hooks/useSignup";
 
 function SignUp() {
   const [inputs, setInputs] = useState({
-    fullName: '',
-    userName: '',
-    password: '',
-    confirmPassword: '',
-    gender:'',
-  })
+    fullName: "",
+    userName: "",
+    password: "",
+    confirmPassword: "",
+    gender: "",
+  });
 
-  const { loading, signup } = useSignup()
-  
+  const { loading, signup } = useSignup();
+
   const handleCheckboxChange = (gender) => {
-  setInputs({...inputs,gender})
-  }
+    setInputs({ ...inputs, gender });
+  };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await signup(inputs)
-  }
+    await signup(inputs);
+  };
 
   return (
     <div className="flex flex-col items-center justify-center min-w-96 mx-auto">
@@ -86,11 +86,20 @@ function SignUp() {
               }
             />
           </div>
-          <GenderCheckbox onCheckboxChange = {handleCheckboxChange} selectedGender = {inputs.gender}/>
+          <GenderCheckbox
+            onCheckboxChange={handleCheckboxChange}
+            selectedGender={inputs.gender}
+          />
           <Link to="/login" className="link link-neutral">
             Already have an account.
           </Link>
-          <button className="btn btn-block btn-sm mt-2">Sign up</button>
+          <button className="btn btn-block btn-sm mt-2" disabled={loading}>
+            {loading ? (
+              <span className="loading loading-spinner"></span>
+            ) : (
+              "Sign Up"
+            )}
+          </button>
         </form>
       </div>
     </div>
@@ -99,9 +108,7 @@ function SignUp() {
 
 export default SignUp;
 
-
-
-//  Starter code for signup component 
+//  Starter code for signup component
 
 // import React from 'react'
 // import GenderCheckbox from './GenderCheckbox';
