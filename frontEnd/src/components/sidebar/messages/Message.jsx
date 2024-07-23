@@ -22,7 +22,7 @@ const Message = ({ message }) => {
           <img src={profilePic} alt="user avatar" />
         </div>
       </div>
-      <div className={`chat-bubble text-white  ${bubbleBgColor}`}>
+      <div className={`chat-bubble text-white  ${bubbleBgColor} pb-2`}>
         {" "}
         {message.message}
       </div>
